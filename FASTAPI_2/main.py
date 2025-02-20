@@ -4,7 +4,7 @@ from typing import Optional
 
 
 app = FastAPI(
-    title='Mi primer API 196',
+    title='API de gestion de tareas',
     description='Juan Antonio Ochoa Irineo',
     version='1.0.1'
 )
@@ -47,7 +47,17 @@ tareas = [
 def main():
     return {'hola FastAPI': 'JuanAntonio'}
 
-#endpoint Consultar todos
+#endpoint Consultar todas las tareas
 @app.get('/tareas', tags=['Obtener todas las tareas'])
 def ConsultarTodos():
     return {"Tareas Registradas": tareas}
+
+
+# Endpoint para obtener una tarea por su ID
+@app.get('/tareas/{tarea_id}', tags=['Obtener tarea por id'])
+def obtener_tarea(tarea_id: int):
+    for tarea in tareas:
+        if tarea["id"] == tarea_id:
+            return tarea
+    raise HTTPException(status_code=404, detail="Tarea no fue encontrada")
+
