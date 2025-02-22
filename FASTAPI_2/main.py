@@ -12,30 +12,29 @@ app = FastAPI(
 tareas = [
     {
         "id": 1,
-        "titulo": "Estudiar para el examen",
-        "descripcion": "Repasar los apuntes de TAI",
+        "titulo": "Estudiar para el examen de matemáticas",
+        "descripcion": "Repasar los apuntes de álgebra y cálculo",
         "vencimiento": "14-02-24",
         "estado": "completada"
     },
     {
         "id": 2,
-        "titulo": "Hacer ejercicio",
-        "descripcion": "Correr 30 minutos",
+        "titulo": "Hacer ejercicio en el gimnasio",
+        "descripcion": "Hacer 30 minutos de cardio y 20 minutos de pesas",
         "vencimiento": "15-02-24",
         "estado": "no completada"
     },
-
-     {
+    {
         "id": 3,
-        "titulo": "Leer un libro",
-        "descripcion": "Leer 20 páginas de un libro",
+        "titulo": "Leer un libro de ciencia ficción",
+        "descripcion": "Leer 20 páginas de 'Dune'",
         "vencimiento": "16-02-24",
         "estado": "no completada"
     },
     {
         "id": 4,
-        "titulo": "Comprar víveres",
-        "descripcion": "Comprar leche, pan y huevos",
+        "titulo": "Comprar víveres para la semana",
+        "descripcion": "Comprar leche, pan, huevos y verduras",
         "vencimiento": "17-02-24",
         "estado": "no completada"
     }
