@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from typing import Optional, List
-from pydantic import BaseModel
+from modelsPydantic import modelUsuario
 
 
 app = FastAPI(
@@ -9,11 +9,7 @@ app = FastAPI(
     version='1.0.1'
 )
 
-class modelUsuario(BaseModel):
-    id:int
-    nombre:str
-    edad:int
-    correo:str
+
 
 
 usuarios=[

@@ -9,6 +9,7 @@ app = FastAPI(
     version='1.0.1'
 )
 
+
 tareas = [
     {
         "id": 1,
