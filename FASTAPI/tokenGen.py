@@ -13,3 +13,4 @@ def validateToken(token:str):
         raise HTTPException(status_code=403, detail= 'El token expiro')
     except InvalidTokenError:
         raise HTTPException(status_code=403, detail= 'Token no autorizado')
+    
