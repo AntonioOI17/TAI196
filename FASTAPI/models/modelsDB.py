@@ -7,4 +7,4 @@ class User(Base):
     name = Column(String)
     age = Column(Integer)
     email = Column(String)
-    
+
