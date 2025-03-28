@@ -86,7 +86,42 @@ def agregar_usuario(usuario: modelUsuario):
         db.close()
     
 
-    
+
+#endpoint para actualizar usuario
+@app.put('/Usuarios/{id}', response_model=modelUsuario ,tags=['Operaciones CRUD'])
+def actualizar_usuario(id: int, usuario_actualizado: modelUsuario):
+    db = Session()
+    try:
+        consulta = db.query(User).filter(User.id == id).first()
+        if not consulta:
+            return JSONResponse(status_code=404, content= {"mensaje": "Usuario no encontrado"})
+        for key, value in usuario_actualizado.model_dump().items():
+            setattr(consulta, key, value)
+        db.commit()
+        return JSONResponse(content= {"mensaje": "Usuario actualizado correctamente", "usuario": usuario_actualizado.model_dump()})
+    except Exception as x:
+        db.rollback()
+        return JSONResponse(status_code=500, content= {"mensaje": "No se pudo actualizar", "Excepcion": str(x)})
+    finally:
+        db.close()
+
+
+#endpoint para borrar usuario
+@app.delete('/Usuarios/{id}', tags=['Operaciones CRUD'])
+def eliminar_usuario(id: int):
+    db = Session()
+    try:
+        consulta = db.query(User).filter(User.id == id).first()
+        if not consulta:
+            return JSONResponse(status_code=404, content= {"mensaje": "Usuario no encontrado"})
+        db.delete(consulta)
+        db.commit()
+        return JSONResponse(content= {"mensaje": "Usuario eliminado correctamente"})
+    except Exception as x:
+        db.rollback()
+        return JSONResponse(status_code=500, content= {"mensaje": "No se pudo eliminar", "Excepcion": str(x)})
+    finally:
+        db.close()
 
  #endpoint Para Agregar usuarios
 """ @app.put('/usuarios/{id}', response_model=modelUsuario , tags=['Operaciones CRUD'])
